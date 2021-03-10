@@ -7,6 +7,10 @@ source ~/.bashrc
 test -n "$AWS_REGION" && echo AWS_REGION is "$AWS_REGION" || echo AWS_REGION is not set
 echo "export ACCOUNT_ID=${ACCOUNT_ID}" | tee -a ~/.bash_profile
 echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile
+export CDK_DEFAULT_ACCOUNT=$(echo $ACCOUNT_ID)
+export CDK_DEFAULT_REGION=$(echo $AWS_REGION)
+echo "export CDK_DEFAULT_ACCOUNT=${CDK_DEFAULT_ACCOUNT}" | tee -a ~/.bash_profile
+echo "export CDK_DEFAULT_REGION=${CDK_DEFAULT_REGION}" | tee -a ~/.bash_profile
 aws configure set default.region ${AWS_REGION}
 aws configure get default.region
 aws sts get-caller-identity --query Arn | grep ecsworkshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
