@@ -113,8 +113,10 @@ class BaseVPCStack(core.Stack):
                     "onDemandAllocationStrategy": "prioritized",
                     "onDemandBaseCapacity": 0,
                     "onDemandPercentageAboveBaseCapacity": 0,
+# deliberately bad options                    
 #                    "spotAllocationStrategy": "capacity-optimized"
-                    "spotAllocationStrategy": "lowest-price"
+                    "spotAllocationStrategy": "lowest-price",
+                    "SpotInstancePools": 1
                     },
                 "launchTemplate": {
                     "launchTemplateSpecification": {
