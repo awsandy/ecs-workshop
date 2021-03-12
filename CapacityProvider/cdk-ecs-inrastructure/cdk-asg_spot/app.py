@@ -39,7 +39,7 @@ class BaseVPCStack(core.Stack):
         )
         
         ###### EC2 Autoscaling CAPACITY PROVIDERS SECTION #####
-         Adding EC2 capacity to the ECS Cluster
+        # Adding EC2 capacity to the ECS Cluster
         self.asg = self.ecs_cluster.add_capacity(
             "ECSEC2Capacity",
             instance_type=aws_ec2.InstanceType(instance_type_identifier='t2.xlarge'),
