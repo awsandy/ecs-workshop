@@ -38,6 +38,18 @@ class BaseVPCStack(core.Stack):
             name="service",
         )
         
+        ###### EC2 Autoscaling CAPACITY PROVIDERS SECTION #####
+         Adding EC2 capacity to the ECS Cluster
+        self.asg = self.ecs_cluster.add_capacity(
+            "ECSEC2Capacity",
+            instance_type=aws_ec2.InstanceType(instance_type_identifier='t2.xlarge'),
+            min_capacity=0,
+            max_capacity=10
+        )
+        
+        core.CfnOutput(self, "EC2AutoScalingGroupName", value=self.asg.auto_scaling_group_name, export_name="EC2ASGName")
+        ##### END CAPACITY PROVIDER SECTION #####
+
 
         ###### EC2 SPOT CAPACITY PROVIDER SECTION ######
         
@@ -119,7 +131,7 @@ class BaseVPCStack(core.Stack):
         #                {"instanceType": "m4.large"},
         #                {"instanceType": "t3.large"},
         #                {"instanceType": "m3.large"},
-                        {"instanceType": "t2.large"}
+                        {"instanceType": "t2.xlarge"}
                     ]
                 }
             }

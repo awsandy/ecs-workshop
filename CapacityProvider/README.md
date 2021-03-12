@@ -42,9 +42,9 @@ class CapacityProviderFargateService(core.Stack):
 
 ## EC2 Capacity provider - autoscaling
 
-In container-demo/cdk
+In container-demo/cdk  9renamed cdk-ecs-inrastructure/cdk-asg
 
-CDK deploys the cluste rinfra including the capacity provider CDK code (can't be doen form cli):
+CDK deploys the cluster infra including the capacity provider CDK code (can't be doen form cli):
 
 Capacity provider must be created via an API - eg CDK
 
@@ -75,7 +75,7 @@ aws ecs put-cluster-capacity-providers --cluster container-demo \
 
 ---
 
-Then a sample app EC2 backed ECS service from  ecsdemo-capacityproviders/ec2
+Then a sample app EC2 backed ECS service from  ecsdemo-capacityproviders/ec2 (renamed )
 
 * starts with 2x EC2 instances
 * edit ecsdemo-capacityproviders/ec2/app.py - change desired count to 10 (from 1) 

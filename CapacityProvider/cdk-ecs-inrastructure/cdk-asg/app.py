@@ -46,7 +46,7 @@ class BaseVPCStack(core.Stack):
             max_capacity=10
         )
         
-        #core.CfnOutput(self, "EC2AutoScalingGroupName", value=self.asg.auto_scaling_group_name, export_name="EC2ASGName")
+        core.CfnOutput(self, "EC2AutoScalingGroupName", value=self.asg.auto_scaling_group_name, export_name="EC2ASGName")
         ##### END CAPACITY PROVIDER SECTION #####
 
         ###### EC2 SPOT CAPACITY PROVIDER SECTION ######

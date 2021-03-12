@@ -10,7 +10,7 @@ aws iam get-role --role-name "AWSServiceRoleForECS" || aws iam create-service-li
 
 git clone https://github.com/brentley/container-demo
 git clone https://github.com/adamjkeller/ecsdemo-capacityproviders
-cd container-demo/cdk
+#cd container-demo/cdk
 cdk context --clear && cdk deploy --require-approval never
 
 

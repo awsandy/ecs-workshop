@@ -2,7 +2,7 @@
 sudo yum -y install jq nodejs python36
 
 # Setting CDK Version
-export AWS_CDK_VERSION="1.41.0"
+export AWS_CDK_VERSION="1.93.0"
 
 # Install aws-cdk
 npm install -g --force aws-cdk@$AWS_CDK_VERSION
