@@ -23,7 +23,7 @@ class BaseVPCStack(core.Stack):
             self, "BaseVPC",
             cidr='10.0.0.0/24',
         # add to try and trigger spot interruptions
-            max_azs=1
+            max_azs=2
         )
         
         # Creating ECS Cluster in the VPC created above
