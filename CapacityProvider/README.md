@@ -269,3 +269,17 @@ Then, I’ve launched another ASG (configured to be On demand) and simply start 
 ## Terraform
 
 https://github.com/hashicorp/terraform-provider-aws/pull/16942
+
+
+scale 200 tasks - seem to get even distro of tasks spot / on-deamnd - 20 insyance (10 each)
+
+scale down to 20 - 1 task on each of 20 nodes  
+(3840 cpu units avail per node - +254 1 running task = 4096)
+
+wait 5 minutes (cooldown)
+
+The target capacity - if total cluster > 80% scale up
+
+Doesn't work as expected - is ECS service you have deined using these cpacity providers (two of them )
+
+
