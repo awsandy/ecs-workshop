@@ -27,4 +27,4 @@ aws ecs put-cluster-capacity-providers \
 --cluster container-demo \
 --capacity-providers $capacity_provider_name $spot_capacity_provider_name \
 --default-capacity-provider-strategy \
-capacityProvider=$capacity_provider_name,weight=1,base=1 capacityProvider=$spot_capacity_provider_name,weight=4,base=0 --output text
+capacityProvider=$capacity_provider_name,weight=1,base=1 capacityProvider=$spot_capacity_provider_name,weight=5,base=0 --output text

@@ -44,7 +44,7 @@ class BaseVPCStack(core.Stack):
             "ECSEC2Capacity",
             instance_type=aws_ec2.InstanceType(instance_type_identifier='t2.xlarge'),
             min_capacity=0,
-            max_capacity=10,
+            max_capacity=5,
         )
         
         core.CfnOutput(self, "EC2AutoScalingGroupName", value=self.asg.auto_scaling_group_name, export_name="EC2ASGName")
@@ -106,7 +106,7 @@ class BaseVPCStack(core.Stack):
         self.ecs_ec2_spot_mig_asg = aws_autoscaling.CfnAutoScalingGroup(
             self, "ECSEC2SpotCapacity",
             min_size = "0",
-            max_size = "10",
+            max_size = "15",
             vpc_zone_identifier = [ x.subnet_id for x in self.vpc.private_subnets ],
             mixed_instances_policy = {
                 "instancesDistribution": {
