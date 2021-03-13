@@ -271,6 +271,8 @@ Then, I’ve launched another ASG (configured to be On demand) and simply start 
 https://github.com/hashicorp/terraform-provider-aws/pull/16942
 
 
+----
+
 scale 200 tasks - seem to get even distro of tasks spot / on-deamnd - 20 insyance (10 each)
 
 scale down to 20 - 1 task on each of 20 nodes  
@@ -282,4 +284,6 @@ The target capacity - if total cluster > 80% scale up
 
 Doesn't work as expected - is ECS service you have deined using these cpacity providers (two of them )
 
+Also need to remove tasks properly (let CF run) - other wide may leave capacity allocated in cluster
 
+(follow alarm in CW)
