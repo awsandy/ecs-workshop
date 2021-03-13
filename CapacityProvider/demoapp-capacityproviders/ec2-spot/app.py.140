@@ -68,7 +68,7 @@ class CapacityProviderEC2Service(core.Stack):
             cpu=256,
             memory_limit_mib=512,
             #desired_count=1,
-            desired_count=200,
+            desired_count=140,
             public_load_balancer=True,
             task_image_options=self.task_image,
         )
