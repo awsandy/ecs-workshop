@@ -6,7 +6,7 @@ export capacity_provider_name=$(echo "EC2$(date +'%s')")
 aws ecs create-capacity-provider \
      --name $capacity_provider_name \
      --auto-scaling-group-provider autoScalingGroupArn="$asg_arn",managedScaling=\{status="ENABLED",targetCapacity=80\},managedTerminationProtection="DISABLED" \
-     --region $AWS_REGION
+     --region $AWS_REGION --output text
 
 export spot_asg_name=$(aws cloudformation describe-stacks --stack-name ecsworkshop-base --query 'Stacks[*].Outputs[?ExportName==`EC2SpotASGName`].OutputValue' --output text)
 export spot_asg_arn=$(aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names $spot_asg_name --query 'AutoScalingGroups[].AutoScalingGroupARN' --output text)
