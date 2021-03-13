@@ -17,12 +17,7 @@ aws ecs create-capacity-provider \
      --auto-scaling-group-provider autoScalingGroupArn="$spot_asg_arn",managedScaling=\{status="ENABLED",targetCapacity=75\},managedTerminationProtection="DISABLED" \
      --region $AWS_REGION --output text
 
-
-
-#aws ecs put-cluster-capacity-providers --cluster container-demo \
-#--capacity-providers $capacity_provider_name \
-#--default-capacity-provider-strategy capacityProvider=$capacity_provider_name,weight=1,base=1
-
+# put both capacity providers - favour spot 5:1
 aws ecs put-cluster-capacity-providers \
 --cluster container-demo \
 --capacity-providers $capacity_provider_name $spot_capacity_provider_name \
