@@ -5,7 +5,7 @@ export capacity_provider_name=$(echo "EC2$(date +'%s')")
 # Creating capacity provider
 aws ecs create-capacity-provider \
      --name $capacity_provider_name \
-     --auto-scaling-group-provider autoScalingGroupArn="$asg_arn",managedScaling=\{status="ENABLED",targetCapacity=80\},managedTerminationProtection="DISABLED" \
+     --auto-scaling-group-provider autoScalingGroupArn="$asg_arn",managedScaling=\{status="ENABLED",targetCapacity=75\},managedTerminationProtection="DISABLED" \
      --region $AWS_REGION --output text
 
 export spot_asg_name=$(aws cloudformation describe-stacks --stack-name ecsworkshop-base --query 'Stacks[*].Outputs[?ExportName==`EC2SpotASGName`].OutputValue' --output text)
@@ -14,7 +14,7 @@ export spot_capacity_provider_name=$(echo "EC2Spot$(date +'%s')")
 # Creating capacity provider
 aws ecs create-capacity-provider \
      --name $spot_capacity_provider_name \
-     --auto-scaling-group-provider autoScalingGroupArn="$spot_asg_arn",managedScaling=\{status="ENABLED",targetCapacity=80\},managedTerminationProtection="DISABLED" \
+     --auto-scaling-group-provider autoScalingGroupArn="$spot_asg_arn",managedScaling=\{status="ENABLED",targetCapacity=75\},managedTerminationProtection="DISABLED" \
      --region $AWS_REGION --output text
 
 
