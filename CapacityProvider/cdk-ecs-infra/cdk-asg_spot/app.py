@@ -108,7 +108,7 @@ class BaseVPCStack(core.Stack):
             self, "ECSEC2SpotCapacity",
             min_size = "0",
             max_size = "10",
-            desired_capacity=1,
+            desired_capacity="1",
             vpc_zone_identifier = [ x.subnet_id for x in self.vpc.private_subnets ],
             mixed_instances_policy = {
                 "instancesDistribution": {
