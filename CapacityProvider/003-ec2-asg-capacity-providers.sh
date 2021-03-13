@@ -15,7 +15,7 @@ export spot_capacity_provider_name=$(echo "EC2Spot$(date +'%s')")
 aws ecs create-capacity-provider \
      --name $spot_capacity_provider_name \
      --auto-scaling-group-provider autoScalingGroupArn="$spot_asg_arn",managedScaling=\{status="ENABLED",targetCapacity=80\},managedTerminationProtection="DISABLED" \
-     --region $AWS_REGION
+     --region $AWS_REGION --output text
 
 
 
@@ -27,4 +27,4 @@ aws ecs put-cluster-capacity-providers \
 --cluster container-demo \
 --capacity-providers $capacity_provider_name $spot_capacity_provider_name \
 --default-capacity-provider-strategy \
-capacityProvider=$capacity_provider_name,weight=1,base=1 capacityProvider=$spot_capacity_provider_name,weight=4,base=0
+capacityProvider=$capacity_provider_name,weight=1,base=1 capacityProvider=$spot_capacity_provider_name,weight=4,base=0 --output text
