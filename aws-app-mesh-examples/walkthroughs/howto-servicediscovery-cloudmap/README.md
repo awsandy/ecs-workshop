@@ -15,7 +15,7 @@ Set or export the following environment variables with appropriate values for yo
 
 ```bash
 # Your AWS account ID
-export AWS_ACCOUNT_ID=999999999999
+export AWS_ACCOUNT_ID=
 
 # The AWS region you want to use
 export AWS_DEFAULT_REGION=us-west-2
