@@ -8,9 +8,8 @@ aws cloudformation delete-stack   --stack-name CDKToolkit
 aws cloudformation delete-stack   --stack-name ecsworkshop-base
 aws iam get-role --role-name "AWSServiceRoleForECS" || aws iam create-service-linked-role --aws-service-name "ecs.amazonaws.com"
 
-git clone https://github.com/brentley/container-demo
-git clone https://github.com/adamjkeller/ecsdemo-capacityproviders
-#cd container-demo/cdk
+#git clone https://github.com/brentley/container-demo
+#git clone https://github.com/adamjkeller/ecsdemo-capacityproviders
 
 cd ~/environment/ecs-workshop/CapacityProvider/cdk-ecs-infra/cdk-asg_spot
 cdk context --clear && cdk deploy --require-approval never

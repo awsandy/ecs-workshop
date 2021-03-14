@@ -16,7 +16,7 @@ Parameters:
   ClusterSize:
     Description: How many ECS hosts do you want to initially deploy?
     Type: Number
-    Default: 5 
+    Default: 2
 
   KeyName:
     Description: The EC2 Key Pair to allow SSH access to the instances
@@ -65,8 +65,8 @@ Resources:
         - 'Fn::ImportValue': !Sub "${EnvironmentName}:PrivateSubnet1"
         - 'Fn::ImportValue': !Sub "${EnvironmentName}:PrivateSubnet2"
       LaunchConfigurationName: !Ref ECSLaunchConfiguration
-      MinSize: "2"
-      MaxSize: "6"
+      MinSize: "1"
+      MaxSize: "4"
       Tags:
         - Key: Name
           Value: !Sub ${EnvironmentName} ECS host

@@ -14,7 +14,7 @@ fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 ECR_URL="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-COLOR_TELLER_IMAGE=${COLOR_TELLER_IMAGE:-"${ECR_URL}/colorteller"}
+COLOR_TELLER_IMAGE="${ECR_URL}/colorteller"
 GO_PROXY=${GO_PROXY:-"https://proxy.golang.org"}
 AWS_CLI_VERSION=$(aws --version 2>&1 | cut -d/ -f2 | cut -d. -f1)
 
@@ -31,5 +31,10 @@ ecr_login() {
 docker build --build-arg GO_PROXY=$GO_PROXY -t $COLOR_TELLER_IMAGE ${DIR}
 
 # push
+echo "login"
 ecr_login
+echo "repo"
+aws ecr describe-repositories --repository-name colorteller >/dev/null 2>&1 || aws ecr create-repository --repository-name colorteller >/dev/null
+echo "push"
+
 docker push $COLOR_TELLER_IMAGE
