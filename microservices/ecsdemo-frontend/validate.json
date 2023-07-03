@@ -1,0 +1,62 @@
+{
+  "format_version": "1.0",
+  "valid": false,
+  "error_count": 2,
+  "warning_count": 0,
+  "diagnostics": [
+    {
+      "severity": "error",
+      "summary": "Value for unconfigurable attribute",
+      "detail": "Can't configure a value for \"primary_name_server\": its value will be decided automatically based on the result of applying this configuration.",
+      "address": "aws_route53_zone.Z10066652NU200YE4YKYE",
+      "range": {
+        "filename": "aws_route53_zone__Z10066652NU200YE4YKYE.tf",
+        "start": {
+          "line": 6,
+          "column": 27,
+          "byte": 384
+        },
+        "end": {
+          "line": 6,
+          "column": 48,
+          "byte": 405
+        }
+      },
+      "snippet": {
+        "context": "resource \"aws_route53_zone\" \"Z10066652NU200YE4YKYE\"",
+        "code": "    primary_name_server = \"ns-0.awsdns-00.com.\"",
+        "start_line": 6,
+        "highlight_start_offset": 26,
+        "highlight_end_offset": 47,
+        "values": []
+      }
+    },
+    {
+      "severity": "error",
+      "summary": "expected type to be one of [HTTP], got DNS_HTTP",
+      "detail": "",
+      "address": "aws_service_discovery_service.srv-drywcrjoa2ul3ybn",
+      "range": {
+        "filename": "aws_service_discovery_service__srv-drywcrjoa2ul3ybn.tf",
+        "start": {
+          "line": 8,
+          "column": 20,
+          "byte": 356
+        },
+        "end": {
+          "line": 8,
+          "column": 30,
+          "byte": 366
+        }
+      },
+      "snippet": {
+        "context": "resource \"aws_service_discovery_service\" \"srv-drywcrjoa2ul3ybn\"",
+        "code": "    type         = \"DNS_HTTP\"",
+        "start_line": 8,
+        "highlight_start_offset": 19,
+        "highlight_end_offset": 29,
+        "values": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+terraform import aws_security_group_rule.sg-0b48672cbf7717766_ingress_1 sg-0b48672cbf7717766_ingress_tcp_3000_3000_self | grep Importing

@@ -1,0 +1,21 @@
+tfsec security report
+CRITICAL:
+[
+  "aws_security_group_rule.sg-0b48672cbf7717766_egress_1",
+  "Security group rule allows egress to multiple public internet addresses.",
+  "Set a more restrictive cidr range",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-egress-sgr/"
+]
+[
+  "aws_security_group_rule.sg-0336ba9305f717ce8_egress_1",
+  "Security group rule allows egress to multiple public internet addresses.",
+  "Set a more restrictive cidr range",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-egress-sgr/"
+]
+[
+  "aws_security_group_rule.sg-0a8c1a070641f7c30_ingress_1",
+  "Security group rule allows ingress from public internet.",
+  "Set a more restrictive cidr range",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-ingress-sgr/"
+]
+HIGH:

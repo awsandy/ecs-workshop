@@ -1,0 +1,57 @@
+tfsec security report
+CRITICAL:
+[
+  "aws_security_group_rule.sg-0b48672cbf7717766_egress_1",
+  "Security group rule allows egress to multiple public internet addresses.",
+  "Set a more restrictive cidr range",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-egress-sgr/"
+]
+[
+  "aws_security_group_rule.sg-0336ba9305f717ce8_egress_1",
+  "Security group rule allows egress to multiple public internet addresses.",
+  "Set a more restrictive cidr range",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-egress-sgr/"
+]
+[
+  "aws_security_group_rule.sg-0a8c1a070641f7c30_ingress_1",
+  "Security group rule allows ingress from public internet.",
+  "Set a more restrictive cidr range",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-ingress-sgr/"
+]
+[
+  "aws_lb_listener.arn_aws_elasticloadbalancing_eu-west-2_566972129213_listener_app_ecswo-Front-1M69OSRSV4E9Z_65bb782bf8b1d07b_608ff6afe838ec0e",
+  "Listener for application load balancer does not use HTTPS.",
+  "Switch to HTTPS to benefit from TLS security features",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/elb/http-not-used/"
+]
+HIGH:
+[
+  "aws_subnet.subnet-0cb7f045d1e65a317",
+  "Subnet associates public IP address.",
+  "Set the instance to not be publicly accessible",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-ip-subnet/"
+]
+[
+  "aws_subnet.subnet-0b577247c767ac4c5",
+  "Subnet associates public IP address.",
+  "Set the instance to not be publicly accessible",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-ip-subnet/"
+]
+[
+  "aws_subnet.subnet-07b8d4e34ea1baed5",
+  "Subnet associates public IP address.",
+  "Set the instance to not be publicly accessible",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/ec2/no-public-ip-subnet/"
+]
+[
+  "aws_lb.arn_aws_elasticloadbalancing_eu-west-2_566972129213_loadbalancer_app_ecswo-Front-1M69OSRSV4E9Z_65bb782bf8b1d07b",
+  "Load balancer is exposed publicly.",
+  "Switch to an internal load balancer or add a tfsec ignore",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/elb/alb-not-public/"
+]
+[
+  "aws_lb.arn_aws_elasticloadbalancing_eu-west-2_566972129213_loadbalancer_app_ecswo-Front-1M69OSRSV4E9Z_65bb782bf8b1d07b",
+  "Application load balancer is not set to drop invalid headers.",
+  "Set drop_invalid_header_fields to true",
+  "https://aquasecurity.github.io/tfsec/v1.28.1/checks/aws/elb/drop-invalid-headers/"
+]
