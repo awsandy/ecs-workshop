@@ -15,7 +15,7 @@ echo "ammmesh-xray-uncomment"
 files=("ecsdemo-crystal" "ecsdemo-frontend" "ecsdemo-platform")
 for i in "${files[@]}"; do
 
-    lines=$(grep -Fn '#ammmesh-xray-uncomment' ~/environment/${i}/cdk/app.py)
+    lines=$(grep -Fn '#appmesh-xray-uncomment' ~/environment/${i}/cdk/app.py)
     if [[ "$lines" != "" ]]; then
         echo $lines
         unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
@@ -27,7 +27,7 @@ for i in "${files[@]}"; do
             echo $comm
             eval $comm
             echo "check"
-            grep ammmesh-xray-uncomment  ~/environment/${i}/cdk/app.py
+            grep appmesh-xray-uncomment  ~/environment/${i}/cdk/app.py
         fi
     else
         echo "empty lines for $i"
@@ -35,7 +35,7 @@ for i in "${files[@]}"; do
 
 done
 
-lines=$(grep -Fn '#ammmesh-xray-uncomment' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py)
+lines=$(grep -Fn '#appmesh-xray-uncomment' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py)
 if [[ "$lines" != "" ]]; then
 echo $lines
 unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
@@ -47,7 +47,7 @@ if [[ "$unend" != "" ]]; then
     echo $comm
     eval $comm
     echo "check"
-    grep ammmesh-xray-uncomment ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+    grep appmesh-xray-uncomment ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
 fi
 else
     echo "empty lines for nodejs"
@@ -69,5 +69,8 @@ echo "check..."
 grep AWSXRayDaemonWriteAccess ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
 
 
-echo "comment check nodejs"  
-grep '#' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+#echo "comment check nodejs"  
+#grep '#' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+#grep '#' ~/environment/ecsdemo-frontend/cdk/app.py
+#grep '#' ~/environment/ecsdemo-crystal/cdk/app.py
+#grep '#' ~/environment/ecsdemo-platform/cdk/app.py
