@@ -1,0 +1,5 @@
+files=( "ecsdemo-crystal" "ecsdemo-nodejs" "ecsdemo-frontend" "ecsdemo-platform" )
+for i in "${files[@]}"
+do
+cp ~/environment/${i}/cdk/app.py.orig ~/environment/${i}/cdk/app.py
+done
