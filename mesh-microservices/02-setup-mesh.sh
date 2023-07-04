@@ -13,17 +13,22 @@ more
 lines=$(grep -Fn '#appmesh-proxy-uncomment' ~/environment/ecsdemo-crystal/cdk/app.py)
 unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
 unend=$(echo $lines | awk '{print $3}' | cut -f1 -d':')
-sed -i "${unstart},${unend} s/# //" ~/environment/ecsdemo-crystal/cdk/app.py 
+comm=$(printf "sed -i '%s,%s s/#//' ~/environment/ecsdemo-crystal/cdk/app.py" $unstart $unend)
+echo $comm
+eval $comm 
 echo "self edit"
 sed -i -e "/self.appmesh()/s/# //" ~/environment/ecsdemo-crystal/cdk/app.py
 
 
 # nodejs
 echo "nodejs"
-lines=$(grep -Fn '# appmesh-proxy-uncomment' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py | cut -f1 -d:)
+lines=$(grep -Fn '# appmesh-proxy-uncomment' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py)
 unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
 unend=$(echo $lines | awk '{print $3}' | cut -f1 -d':')
-sed -i "${unstart},${unend} s/# //" ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+comm=$(printf "sed -i '%s,%s s/#//' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py" $unstart $unend)
+echo $comm
+eval $comm
+
 echo "self edit"
 sed -i -e "self.appmesh()/s/# //" ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
 
