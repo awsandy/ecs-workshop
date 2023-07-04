@@ -1,32 +1,49 @@
-
-
 echo "XRay edits"
 
-files=( "ecsdemo-crystal" "ecsdemo-nodejs" "ecsdemo-frontend" "ecsdemo-platform" )
-for i in "${files[@]}"
-do 
+files=("ecsdemo-crystal" "ecsdemo-frontend" "ecsdemo-platform")
+for i in "${files[@]}"; do
     sed -i -e '/ENABLE_ENVOY_XRAY_TRACING/s/# //' ~/environment/${i}/cdk/app.py
 done
+sed -i -e '/ENABLE_ENVOY_XRAY_TRACING/s/# //' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
 
-files=( "ecsdemo-crystal" "ecsdemo-nodejs" "ecsdemo-frontend" "ecsdemo-platform" )
-for i in "${files[@]}"
-do 
-    echo $i
-    lines=($(grep -Fn '#ammmesh-xray-uncomment' ~/environment/${i}/cdk/app.py | cut -f1 -d:))
-    unstart=$((${lines[0]} + 1))
-    unend=$((${lines[1]} - 1))
-    sed -i "${unstart},${unend} s/# //" ~/environment/${i}/cdk/app.py 
+
+#########
+echo "ammmesh-xray-uncomment"
+
+files=("ecsdemo-crystal" "ecsdemo-frontend" "ecsdemo-platform")
+for i in "${files[@]}"; do
+
+    lines=$(grep -Fn '#ammmesh-xray-uncomment' ~/environment/${i}/cdk/app.py)
+    echo $lines
+    unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
+    unend=$(echo $lines | awk '{print $3}' | cut -f1 -d':')
+
+    echo "$unstart $unend"
+    if [[ "$unend" != "" ]]; then
+        comm=$(printf "sed -i '%s,%s s/#//' ~/environment/${i}/cdk/app.py" $unstart $unend)
+        echo $comm
+        eval $comm
+    fi
+
 done
 
-files=( "ecsdemo-crystal" "ecsdemo-nodejs" "ecsdemo-frontend" "ecsdemo-platform" )
-for i in "${files[@]}"
-do 
+lines=$(grep -Fn '#ammmesh-xray-uncomment' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py)
+echo $lines
+unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
+unend=$(echo $lines | awk '{print $3}' | cut -f1 -d':')
+
+echo "$unstart $unend"
+if [[ "$unend" != "" ]]; then
+    comm=$(printf "sed -i '%s,%s s/#//' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py" $unstart $unend)
+    echo $comm
+    eval $comm
+fi
+
+echo "AWSXRayDaemonWriteAccess uncomment"
+
+files=("ecsdemo-crystal" "ecsdemo-frontend" "ecsdemo-platform")
+for i in "${files[@]}"; do
     sed -i -e '/AWSXRayDaemonWriteAccess/s/# //' ~/environment/${i}/cdk/app.py
 done
 
-
-
-
-
-
-
+sed -i -e '/AWSXRayDaemonWriteAccess/s/# //' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
