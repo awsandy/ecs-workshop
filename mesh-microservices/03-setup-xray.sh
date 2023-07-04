@@ -36,7 +36,7 @@ for i in "${files[@]}"; do
 done
 
 lines=$(grep -Fn '#ammmesh-xray-uncomment' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py)
-if [["$lines" != ""]]; then
+if [[ "$lines" != "" ]]; then
 echo $lines
 unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
 unend=$(echo $lines | awk '{print $3}' | cut -f1 -d':')
