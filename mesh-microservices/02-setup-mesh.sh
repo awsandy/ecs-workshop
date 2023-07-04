@@ -9,9 +9,10 @@ sed -i -e '/self.appmesh()/s/# //' ~/environment/ecsdemo-platform/cdk/app.py
 echo "Crystal"
 
 lines=$(grep -Fn '#appmesh-proxy-uncomment' ~/environment/ecsdemo-crystal/cdk/app.py)
+echo $lines
 unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
 unend=$(echo $lines | awk '{print $3}' | cut -f1 -d':')
-echo "$lines"
+
 echo  "$unstart $unend"
 if [[ "$unend" != "" ]]; then
     comm=$(printf "sed -i '%s,%s s/#//' ~/environment/ecsdemo-crystal/cdk/app.py" $unstart $unend)
@@ -24,9 +25,9 @@ sed -i -e "/self.appmesh()/s/# //" ~/environment/ecsdemo-crystal/cdk/app.py
 # nodejs
 echo "nodejs"
 lines=$(grep -Fn '# appmesh-proxy-uncomment' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py)
+echo $lines
 unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
-unend=$(echo $lines | awk '{print $3}' | cut -f1 -d':')
-echo "$lines"
+unend=$(echo $lines | awk '{print $4}' | cut -f1 -d':')
 echo "$unstart $unend"
 if [[ $unund != "" ]]; then
     comm=$(printf "sed -i '%s,%s s/#//' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py" $unstart $unend)
@@ -35,7 +36,7 @@ if [[ $unund != "" ]]; then
 fi
 
 echo "self edit"
-sed -i -e "self.appmesh()/s/# //" ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+sed -i -e 'self.appmesh()/s/# //' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
 
 echo "frontend"
 
