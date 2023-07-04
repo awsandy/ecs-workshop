@@ -8,7 +8,6 @@ sed -i -e '/self.appmesh()/s/# //' ~/environment/ecsdemo-platform/cdk/app.py
 
 ## Crystal
 echo "Crystal"
-more
 
 lines=$(grep -Fn '#appmesh-proxy-uncomment' ~/environment/ecsdemo-crystal/cdk/app.py)
 unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
