@@ -3,8 +3,11 @@ echo "XRay edits"
 files=("ecsdemo-crystal" "ecsdemo-frontend" "ecsdemo-platform")
 for i in "${files[@]}"; do
     sed -i -e '/ENABLE_ENVOY_XRAY_TRACING/s/# //' ~/environment/${i}/cdk/app.py
+    echo "check"
+    grep ENABLE_ENVOY_XRAY_TRACING ~/environment/${i}/cdk/app.py
 done
 sed -i -e '/ENABLE_ENVOY_XRAY_TRACING/s/# //' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+grep ENABLE_ENVOY_XRAY_TRACING ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
 
 #########
 echo "ammmesh-xray-uncomment"
@@ -52,6 +55,7 @@ files=("ecsdemo-crystal" "ecsdemo-frontend" "ecsdemo-platform")
 for i in "${files[@]}"; do
     
     sed -i -e '/AWSXRayDaemonWriteAccess/s/# //' ~/environment/${i}/cdk/app.py
+    echo "check"
     grep AWSXRayDaemonWriteAccess ~/environment/${i}/cdk/app.py
 done
 
