@@ -13,6 +13,7 @@ lines=($(grep -Fn '#appmesh-proxy-uncomment' ~/environment/ecsdemo-crystal/cdk/a
 unstart=$((${lines[0]} + 1))
 unend=$((${lines[1]} - 1))
 sed -i "${unstart},${unend} s/# //" ~/environment/ecsdemo-crystal/cdk/app.py 
+echo "self edit"
 sed -i -e "/self.appmesh()/s/# //" ~/environment/ecsdemo-crystal/cdk/app.py
 
 
@@ -22,15 +23,16 @@ lines=($(grep -Fn '#appmesh-proxy-uncomment' ~/environment/ecsdemo-nodejs/cdk/ap
 unstart=$((${lines[0]} + 1))
 unend=$((${lines[1]} - 1))
 sed -i "${unstart},${unend} s/# //" ~/environment/ecsdemo-nodejs/cdk/app.py 
-sed -i -e '"self.appmesh()/s/# //" ~/environment/ecsdemo-nodejs/cdk/app.py
+echo "self edit"
+sed -i -e "self.appmesh()/s/# //" ~/environment/ecsdemo-nodejs/cdk/app.py
 
 echo "frontend"
 
 # frontend
 
-#Commenting previous class
+echo "Commenting previous frontend class"
 sed -i -e '/FrontendService(app, stack_name, env=_env)/s/^#*/#/' ~/environment/ecsdemo-frontend/cdk/app.py 
-#Uncommenting new class
+echo "Uncommenting new frontend class"
 sed -i -e "/FrontendServiceMesh(app, stack_name, env=_env)/s/# //" ~/environment/ecsdemo-frontend/cdk/app.py 
 
 
