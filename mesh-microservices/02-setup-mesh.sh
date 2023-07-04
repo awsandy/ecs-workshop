@@ -19,8 +19,8 @@ if [[ "$unend" != "" ]]; then
     echo $comm
     eval $comm
 fi
-echo "self edit"
-sed -i -e "/self.appmesh()/s/# //" ~/environment/ecsdemo-crystal/cdk/app.py
+echo "self edit crystal"
+sed -i -e '/self.appmesh()/s/# //' ~/environment/ecsdemo-crystal/cdk/app.py
 
 # nodejs
 echo "nodejs"
@@ -35,8 +35,9 @@ if [[ $unund != "" ]]; then
     eval $comm
 fi
 
-echo "self edit"
-sed -i -e 'self.appmesh()/s/# //' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+echo "self edit nodejs"
+sed -i -e '/self.appmesh()/s/# //' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+
 
 echo "frontend"
 
