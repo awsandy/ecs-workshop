@@ -128,7 +128,7 @@ class FrontendServiceMesh(Stack):
             "mesh-crystal-vs",
             mesh=self.mesh,
             #virtual_service_name=cdk.Fn.import_value("MeshCrystalVSName")
-            virtual_service_name="mesh-crystal-vs"
+            virtual_service_name="ecsdemo-crystal.service.local"
         )
         
         self.mesh_nodejs_vs = appmesh.VirtualService.from_virtual_service_attributes(
@@ -136,7 +136,7 @@ class FrontendServiceMesh(Stack):
             "mesh-nodejs-vs",
             mesh=self.mesh,
             #virtual_service_name=cdk.Fn.import_value("MeshNodeJsVSName")
-            virtual_service_name="mesh-nodejs-vs"
+            virtual_service_name="ecsdemo-nodejs.service.local"
         )
         
         self.fargate_task_def = ecs.TaskDefinition(
