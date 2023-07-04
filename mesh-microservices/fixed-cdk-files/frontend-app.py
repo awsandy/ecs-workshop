@@ -91,17 +91,17 @@ class FrontendService(Stack):
         )
         
         # Enable Service Autoscaling
-        #self.autoscale = fargate_load_balanced_service.service.auto_scale_task_count(
-        #    min_capacity=1,
-        #    max_capacity=10
-        #)
+        self.autoscale = fargate_load_balanced_service.service.auto_scale_task_count(
+            min_capacity=1,
+            max_capacity=9
+        )
         
-        #self.autoscale.scale_on_cpu_utilization(
-        #    "CPUAutoscaling",
-        #    target_utilization_percent=50,
-        #    scale_in_cooldown=Duration.seconds(30),
-        #    scale_out_cooldown=Duration.seconds(30)
-        #)
+        self.autoscale.scale_on_cpu_utilization(
+            "CPUAutoscaling",
+            target_utilization_percent=50,
+            scale_in_cooldown=Duration.seconds(30),
+            scale_out_cooldown=Duration.seconds(30)
+        )
 
 class FrontendServiceMesh(Stack):
     

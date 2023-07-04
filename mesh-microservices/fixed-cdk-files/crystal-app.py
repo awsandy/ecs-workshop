@@ -122,18 +122,18 @@ class CrystalService(Stack):
         )
 
         # Enable Service Autoscaling
-        # self.autoscale = self.fargate_service.auto_scale_task_count(
-        #     min_capacity=3,
-        #     max_capacity=10
-        # )
+        self.autoscale = self.fargate_service.auto_scale_task_count(
+             min_capacity=1,
+             max_capacity=9
+        )
         
         # We will use target_utilization_percent=20% for testing purposes
-        # self.autoscale.scale_on_cpu_utilization(
-        #     "CPUAutoscaling",
-        #     target_utilization_percent=20,
-        #     scale_in_cooldown=Duration.seconds(30),
-        #     scale_out_cooldown=Duration.seconds(30)
-        # )
+        self.autoscale.scale_on_cpu_utilization(
+             "CPUAutoscaling",
+             target_utilization_percent=20,
+             scale_in_cooldown=Duration.seconds(30),
+             scale_out_cooldown=Duration.seconds(30)
+        )
         
         
         # App Mesh Implementation

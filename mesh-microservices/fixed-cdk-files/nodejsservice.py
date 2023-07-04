@@ -92,19 +92,19 @@ class NodejsService(Stack):
             )
         )
 
-        # Enable Service Autoscaling
-        # autoscale = fargate_service.auto_scale_task_count(
-        #     min_capacity=3,
-        #     max_capacity=10
-        # )
+        #Enable Service Autoscaling
+        autoscale = fargate_service.auto_scale_task_count(
+             min_capacity=1,
+             max_capacity=9
+        )
 
-        # autoscale.scale_on_cpu_utilization(
-        #     "CPUAutoscaling",
-        #     target_utilization_percent=50,
-        #     scale_in_cooldown=Duration.seconds(30),
-        #     scale_out_cooldown=Duration.seconds(30)
-        # )
-        # self.autoscale = autoscale
+        autoscale.scale_on_cpu_utilization(
+             "CPUAutoscaling",
+             target_utilization_percent=50,
+             scale_in_cooldown=Duration.seconds(30),
+             scale_out_cooldown=Duration.seconds(30)
+        )
+        self.autoscale = autoscale
 
         self.fargate_task_def = fargate_task_def
         self.log_group = log_group
