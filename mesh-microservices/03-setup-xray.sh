@@ -67,3 +67,7 @@ done
 sed -i -e '/AWSXRayDaemonWriteAccess/s/# //' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
 echo "check..."
 grep AWSXRayDaemonWriteAccess ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
+
+
+echo "comment check nodejs"  
+grep '#' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
