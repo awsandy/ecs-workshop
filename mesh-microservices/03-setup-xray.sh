@@ -26,6 +26,8 @@ for i in "${files[@]}"; do
             comm=$(printf "sed -i '%s,%s s/#//' ~/environment/${i}/cdk/app.py" $unstart $unend)
             echo $comm
             eval $comm
+            echo "check"
+            grep ammmesh-xray-uncomment  ~/environment/${i}/cdk/app.py
         fi
     else
         echo "empty lines for $i"
@@ -44,10 +46,13 @@ if [[ "$unend" != "" ]]; then
     comm=$(printf "sed -i '%s,%s s/#//' ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py" $unstart $unend)
     echo $comm
     eval $comm
+    echo "check"
+    grep ammmesh-xray-uncomment ~/environment/ecsdemo-nodejs/cdk/cdk/nodejsservice.py
 fi
 else
     echo "empty lines for nodejs"
 fi
+
 
 echo "AWSXRayDaemonWriteAccess uncomment"
 
