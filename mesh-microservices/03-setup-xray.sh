@@ -13,7 +13,7 @@ files=("ecsdemo-crystal" "ecsdemo-frontend" "ecsdemo-platform")
 for i in "${files[@]}"; do
 
     lines=$(grep -Fn '#ammmesh-xray-uncomment' ~/environment/${i}/cdk/app.py)
-    if [["$lines" != ""]]; then
+    if [[ "$lines" != "" ]]; then
         echo $lines
         unstart=$(echo $lines | awk '{print $1}' | cut -f1 -d':')
         unend=$(echo $lines | awk '{print $3}' | cut -f1 -d':')
