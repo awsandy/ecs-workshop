@@ -7,7 +7,7 @@ cp fixed-cdk-files/frontend-app.py ~/environment/ecsdemo-frontend/cdk/app.py
 # pip it
 echo "pip requirements"
 
-files=( "ecsdemo-crystal" "ecsdemo-nodejs" "ecsdemo-frontend" "ecsdemo-platform" )
+files=( "ecsdemo-platform" "ecsdemo-crystal" "ecsdemo-nodejs" "ecsdemo-frontend"  )
 for i in "${files[@]}"
 do
     pip install --upgrade -r ~/environment/${i}/cdk/requirements.txt 
@@ -15,7 +15,7 @@ done
 
 echo "cdk"
 
-files=( "ecsdemo-crystal" "ecsdemo-nodejs" "ecsdemo-frontend" "ecsdemo-platform" )
+files=( "ecsdemo-platform" "ecsdemo-crystal" "ecsdemo-nodejs" "ecsdemo-frontend")
 for i in "${files[@]}"
 do 
     echo $i
