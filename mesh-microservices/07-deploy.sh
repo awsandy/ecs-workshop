@@ -22,7 +22,7 @@ do
     cd ~/environment/${i}/cdk
     echo "synth"
     cdk synth
-    #cdk diff
+    cdk diff
     cdk deploy --require-approval never
 done
 cd ~environment/ecs-workshop/mesh-microservices
