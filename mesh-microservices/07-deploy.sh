@@ -25,4 +25,4 @@ do
     cdk diff
     cdk deploy --require-approval never
 done
-cd ~environment/ecs-workshop/mesh-microservices
+cd ~/environment/ecs-workshop/mesh-microservices
